@@ -5,21 +5,16 @@ using ECM.Controllers;
 
 public class CheckSpeed : MonoBehaviour
 {
-    public GameObject speed;
-    private BaseCharacterController speed_script;
+    public BaseCharacterController speed_script;
+    public PosterCounter poster_counter_script;
     // Start is called before the first frame update
-    void Start()
-    {
-        speed_script = speed.GetComponent<BaseCharacterController>();
-        
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (speed_script._speed == 10 || speed_script._speed == 30 || speed_script._speed == 20)
+        if (speed_script._speed >= 7)
         {
+            poster_counter_script.poster_counter+=1;
+            Debug.Log("Poster counter: " + poster_counter_script.poster_counter);
             GameObject.Destroy(gameObject);
-            ;
         }
     }
 }

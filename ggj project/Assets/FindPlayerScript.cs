@@ -15,6 +15,7 @@ public class FindPlayerScript : MonoBehaviour
     private Transform Player;
     public GameObject health;
     private HealthCounterScript health_script;
+
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -79,5 +80,6 @@ public class FindPlayerScript : MonoBehaviour
     {
         health_script.healthCounter--;
         Player.position = new Vector3(0, 0, 0);
+        Debug.Log("Health: " + health_script.healthCounter);
     }
 }

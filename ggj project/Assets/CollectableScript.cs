@@ -4,9 +4,29 @@ using UnityEngine;
 
 public class CollectableScript : MonoBehaviour
 {
+    public GameObject collecatble;
+    private WaterCounter collectable_script;
     // Start is called before the first frame update
-    private void OnCollisionEnter(Collision collision)
+    void Start()
     {
-       if(collision.gameObject.tag =="Player") GameObject.Destroy(gameObject);
+        collectable_script = collecatble.GetComponent<WaterCounter>();
+    }
+    //private void OnTriggerEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        GameObject.Destroy(gameObject);
+    //        collectable_script.water_counter++;
+    //        Debug.Log("Water counter: " + collectable_script.water_counter);
+    //    }
+    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            GameObject.Destroy(gameObject);
+            collectable_script.water_counter++;
+            Debug.Log("Water counter: " + collectable_script.water_counter);
+        }
     }
 }
