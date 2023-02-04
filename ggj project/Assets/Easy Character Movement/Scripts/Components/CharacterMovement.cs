@@ -833,7 +833,7 @@ namespace ECM.Components
         public void ApplyVerticalImpulse(float impulse)
         {
             Vector3 up = transform.up;
-            cachedRigidbody.velocity = Vector3.ProjectOnPlane(cachedRigidbody.velocity, up) + up * impulse;
+            cachedRigidbody.velocity = Vector3.Normalize(Vector3.ProjectOnPlane(cachedRigidbody.velocity, up) + up * impulse) * 10;
         }
 
         /// <summary>
