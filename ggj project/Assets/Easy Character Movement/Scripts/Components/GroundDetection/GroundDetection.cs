@@ -2,6 +2,7 @@
 using UnityEditor;
 #endif
 using UnityEngine;
+using ECM.Controllers;
 
 namespace ECM.Components
 {
@@ -13,6 +14,24 @@ namespace ECM.Components
     
     public sealed class GroundDetection : BaseGroundDetection
     {
+        public ParticleSystem hitParticles;
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.GetComponent<Grablje>())
+            {
+                Debug.LogError("grablje udaraju");
+                GetComponent<Rigidbody>().AddExplosionForce(800, transform.position, 1);
+                GetComponent<BaseFirstPersonController>().PublicJump();
+                hitParticles.Play();
+
+            }
+            if (other.GetComponent<Knife>())
+            {
+                Debug.LogError("knife udara");
+                hitParticles.Play();
+                GetComponent<BaseFirstPersonController>().PublicJump();
+            }
+        }
         #region METHODS
 
         /// <summary>

@@ -768,6 +768,11 @@ namespace ECM.Controllers
         /// NOTE: Must be called in FixedUpdate.
         /// </summary>
 
+
+        public void PublicJump()
+        {
+            Jump();
+        }
         protected virtual void Move()
         {
             // Apply movement

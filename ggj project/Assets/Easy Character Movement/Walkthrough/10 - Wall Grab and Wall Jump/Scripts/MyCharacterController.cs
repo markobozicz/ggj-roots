@@ -187,6 +187,7 @@ namespace ECM.Walkthrough.WallGrabWallJump
             applyRootMotion = useRootMotion && movement.isGrounded;
         }
 
+
         /// <summary>
         /// Overrides BaseCharacterController HandleInput method. 
         /// </summary>
