@@ -10,7 +10,7 @@ public class CheckSpeed : MonoBehaviour
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision collision)
     {
-        if (speed_script._speed >= 7)
+        if (speed_script._speed >= 7 && collision.gameObject.tag == "Player")
         {
             poster_counter_script.poster_counter+=1;
             Debug.Log("Poster counter: " + poster_counter_script.poster_counter);

@@ -10,7 +10,7 @@ public class IdleMovementScript : MonoBehaviour
     public float man_speed = 1.25f;
     public float start_point;
     public float end_point;
-    public int noticed_range;
+    public int noticed_range = 10;
     public float direction_point;
     public float idle_range;
     public float patrol_length;
@@ -50,19 +50,24 @@ public class IdleMovementScript : MonoBehaviour
 
         if (state != State.Chasing)
         {
-
+            noticed_range = 10;
             if (IsInRange(Player.position, noticed_range))
+            {
                 state = State.Chasing;
+            }
 
             else if (IsInRange(targetPoint, idle_range))
+            {
                 state = state == State.GoingToStart ? State.GoingToEnd : State.GoingToStart;
+            }
         }
         else
         {
+            noticed_range = 15;
             if (!IsInRange(Player.position, noticed_range * 1.2f))
-                state = Random.value > 0.5f ? State.GoingToStart : State.GoingToEnd;
+                 state = Random.value > 0.5f ? State.GoingToStart : State.GoingToEnd;
+            }
         }
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
