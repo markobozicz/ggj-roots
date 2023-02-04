@@ -19,7 +19,6 @@ namespace ECM.Components
         {
             if (other.GetComponent<Grablje>())
             {
-                Debug.LogError("grablje udaraju");
                 GetComponent<Rigidbody>().AddExplosionForce(800, transform.position, 1);
                 GetComponent<BaseFirstPersonController>().PublicJump();
                 hitParticles.Play();
@@ -27,7 +26,6 @@ namespace ECM.Components
             }
             if (other.GetComponent<Knife>())
             {
-                Debug.LogError("knife udara");
                 hitParticles.Play();
                 GetComponent<BaseFirstPersonController>().PublicJump();
             }

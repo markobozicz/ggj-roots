@@ -23,29 +23,30 @@ public class IdleMovementScript : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        rb = GetComponent<Rigidbody>();   
+        rb = GetComponent<Rigidbody>();
 
-        start_point = transform.position.x -patrol_length;
-        end_point = transform.position.x +patrol_length;
+        start_point = transform.position.x - patrol_length;
+        end_point = transform.position.x + patrol_length;
     }
 
-    bool IsInRange(Vector3 target, float range) {
+    bool IsInRange(Vector3 target, float range)
+    {
         return Vector3.Distance(transform.position, target) <= range;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(state == State.Chasing)
+        if (state == State.Chasing)
             targetPoint = Player.position;
-        else if(state == State.GoingToStart)
+        else if (state == State.GoingToStart)
             targetPoint = new Vector3(start_point, transform.position.y, transform.position.z);
         else
             targetPoint = new Vector3(end_point, transform.position.y, transform.position.z);
 
         transform.rotation = Quaternion.LookRotation(targetPoint - transform.position);
         transform.position += transform.forward * man_speed * Time.deltaTime;
-    
+
 
         if (state != State.Chasing)
         {
@@ -55,10 +56,24 @@ public class IdleMovementScript : MonoBehaviour
 
             else if (IsInRange(targetPoint, idle_range))
                 state = state == State.GoingToStart ? State.GoingToEnd : State.GoingToStart;
-        } else
+        }
+        else
         {
             if (!IsInRange(Player.position, noticed_range * 1.2f))
                 state = Random.value > 0.5f ? State.GoingToStart : State.GoingToEnd;
-        }   
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            EndGame();
+        }
+    }
+    private void EndGame()
+    {
+        man_speed = 0;
     }
 }
+

@@ -13,16 +13,18 @@ public class FindPlayerScript : MonoBehaviour
 
     Rigidbody rb;
     private Transform Player;
-    // Start is called before the first frame update
+    public GameObject health;
+    private HealthCounterScript health_script;
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, jump_height, 0.0f);
+        health_script = health.GetComponent<HealthCounterScript>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         transform.LookAt(Player);
         float y_difference = Mathf.Abs(transform.position.y - Player.position.y);
@@ -64,7 +66,7 @@ public class FindPlayerScript : MonoBehaviour
         }
         else
         {
-            EndGame();
+            TakeLife();
         }
     }
     private void Jump()
@@ -73,8 +75,9 @@ public class FindPlayerScript : MonoBehaviour
         isgrounded = false;
 
     }
-    private void EndGame()
+    private void TakeLife()
     {
-        rabbit_speed = 0;
+        health_script.healthCounter--;
+        Player.position = new Vector3(0, 0, 0);
     }
 }

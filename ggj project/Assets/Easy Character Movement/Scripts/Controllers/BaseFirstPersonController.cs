@@ -22,11 +22,11 @@ namespace ECM.Controllers
 
         [Tooltip("Speed when moving backwards.")]
         [SerializeField]
-        private float _backwardSpeed = 3.0f;
+        public float _backwardSpeed = 3.0f;
 
         [Tooltip("Speed when moving sideways.")]
         [SerializeField]
-        private float _strafeSpeed = 4.0f;
+        public float _strafeSpeed = 4.0f;
 
         [Tooltip("Speed multiplier while running.")]
         [SerializeField]
