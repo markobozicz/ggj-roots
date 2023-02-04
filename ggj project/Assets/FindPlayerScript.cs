@@ -8,6 +8,7 @@ public class FindPlayerScript : MonoBehaviour
     public int noticed_range = 10;
     public int chase_range = 20;
     public bool player_chasing = false;
+    public int rabbit_speed = 0;
 
     public Transform Player;
     // Start is called before the first frame update
@@ -34,7 +35,7 @@ public class FindPlayerScript : MonoBehaviour
 
     private void Chase()
     {
-        transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+        transform.position += transform.forward * rabbit_speed * Time.deltaTime;
         noticed_range = 15;
         player_chasing = true;
     }
