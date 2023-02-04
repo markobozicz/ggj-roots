@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class FindPlayerScript : MonoBehaviour
 {
-    public int MoveSpeed = 4;
     public int noticed_range = 10;
-    public int chase_range = 20;
     public bool player_chasing = false;
-    public int rabbit_speed = 2;
+    public float rabbit_speed = 7f;
     private Vector3 jump;
     public float jump_height = 4.5f;
-    private bool isGrounded = false;
+    private bool isgrounded = true;
 
     Rigidbody rb;
     private Transform Player;
@@ -24,11 +22,12 @@ public class FindPlayerScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.LookAt(Player);
+        float y_difference = Mathf.Abs(transform.position.y - Player.position.y);
 
-        if (Vector3.Distance(transform.position, Player.position) <= noticed_range)
+        if (Vector3.Distance(transform.position, Player.position) <= noticed_range && y_difference<=4.4)
         {
             Chase();
         }
@@ -41,27 +40,41 @@ public class FindPlayerScript : MonoBehaviour
 
     private void Chase()
     {
-        transform.position += transform.forward * rabbit_speed * Time.deltaTime;
+        Vector3 forward = transform.forward;
+        forward.y = 0;
+        transform.position += forward * rabbit_speed * Time.deltaTime;
         noticed_range = 15;
         player_chasing = true;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag != "Player")
         {
-            isGrounded = true;
-        }
-        
-        if (player_chasing && collision.gameObject.tag == "Fence" && isGrounded)
-        {
-            rb.AddForce(jump * 2, ForceMode.Impulse);
-            isGrounded = false;
-        }
+            if (collision.gameObject.tag == "Ground") isgrounded = true;
 
-        if (collision.gameObject.tag == "Player")
-        {
-            rabbit_speed = 0;
+            else if (player_chasing && collision.gameObject.tag == "Fence" && isgrounded) Jump();
+
+            else if (collision.gameObject.tag == "Box")
+            {
+                Vector3 forward = transform.forward;
+                transform.LookAt(Player);
+            }
+
         }
+        else
+        {
+            EndGame();
+        }
+    }
+    private void Jump()
+    {
+        rb.AddForce(jump * 2, ForceMode.Impulse);
+        isgrounded = false;
+
+    }
+    private void EndGame()
+    {
+        rabbit_speed = 0;
     }
 }

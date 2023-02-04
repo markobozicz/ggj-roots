@@ -95,6 +95,8 @@ namespace ECM.Components
         private Vector3 _savedVelocity;
         private Vector3 _savedAngularVelocity;
 
+        public bool on_ground;
+
         #endregion
 
         #region PROPERTIES
