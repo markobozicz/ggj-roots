@@ -15,10 +15,10 @@ public class TireJump : MonoBehaviour
     void FixedUpdate()
     {
         if (tf) rb.AddForce(Vector3.up * 70, ForceMode.Impulse);
-        if (Player.transform.position.y - transform.position.y >= 0.5 && Player.transform.position.y - transform.position.y <= 0.6)
-        {
-            rb.AddForce(Vector3.up * -70, ForceMode.Impulse);
-        }
+        //if (Player.transform.position.y - transform.position.y >= 0.5 && Player.transform.position.y - transform.position.y <= 0.6)
+        //{
+        //    rb.AddForce(Vector3.up * -70, ForceMode.Impulse);
+        //}
     }
     private void OnTriggerEnter(Collider other)
     {
