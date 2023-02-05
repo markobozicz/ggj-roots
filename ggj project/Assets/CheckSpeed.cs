@@ -15,9 +15,9 @@ public class CheckSpeed : MonoBehaviour
         {
             Instantiate(destroyParticles, transform.position, Quaternion.identity);
             FindObjectOfType<playerSounds>().posterDestroy.Play();
+            GameObject.Destroy(gameObject);
             poster_counter_script.poster_counter+=1;
             Debug.Log("Poster counter: " + poster_counter_script.poster_counter);
-            GameObject.Destroy(gameObject);
         }
     }
 }
