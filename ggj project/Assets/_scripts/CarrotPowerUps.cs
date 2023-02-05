@@ -16,6 +16,7 @@ public class CarrotPowerUps : MonoBehaviour
     public bool pickedSomething;
     public PlayerTakeObject playerTakeObj;
     public playerSounds playerSounds;
+    public ParticleSystem rotationParrticles;
 
     void Update()
     {
@@ -147,6 +148,8 @@ public class CarrotPowerUps : MonoBehaviour
 
     public void ActivateRotation()
     {
+        rotationParrticles.Play();
+        playerSounds.rotatingSound.Play();
         if (carrotAnimator)
         {
             carrotAnimator.SetTrigger("rotating");
@@ -156,6 +159,8 @@ public class CarrotPowerUps : MonoBehaviour
     }
     public void DeactivateRotation()
     {
+        rotationParrticles.Stop();
+        rotationParrticles.Stop();
         if (carrotAnimator)
         {
             carrotAnimator.ResetTrigger("rotating");

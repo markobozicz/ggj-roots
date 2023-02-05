@@ -12,6 +12,7 @@ public class playerSounds : MonoBehaviour
     public AudioSource groundedSound;
     public AudioSource unGroundedSound;
     public AudioSource rotatingSound;
+    public AudioSource waterSound;
     
     
 

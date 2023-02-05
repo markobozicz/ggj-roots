@@ -27,6 +27,7 @@ public class CollectableScript : MonoBehaviour
             GameObject.Destroy(gameObject);
             collectable_script.water_counter++;
             Debug.Log("Water counter: " + collectable_script.water_counter);
+            FindObjectOfType<playerSounds>().waterSound.Play();
         }
     }
 }
