@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FindPlayerScript : MonoBehaviour
 {
+    public Animator animator;
     public int noticed_range = 10;
     public bool player_chasing = false;
     public float rabbit_speed = 7f;
@@ -18,6 +19,8 @@ public class FindPlayerScript : MonoBehaviour
 
     void Start()
     {
+        // idle animation
+        animator.SetTrigger("idle");
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, jump_height, 0.0f);
@@ -36,6 +39,7 @@ public class FindPlayerScript : MonoBehaviour
         }
         else
         {
+            //idle 
             noticed_range = 10;
             player_chasing = false;
         }
@@ -43,6 +47,7 @@ public class FindPlayerScript : MonoBehaviour
 
     private void Chase()
     {
+        // run animation
         Vector3 forward = transform.forward;
         forward.y = 0;
         transform.position += forward * rabbit_speed * Time.deltaTime;
@@ -72,14 +77,21 @@ public class FindPlayerScript : MonoBehaviour
     }
     private void Jump()
     {
+        // jump
         rb.AddForce(jump * 2, ForceMode.Impulse);
         isgrounded = false;
 
     }
+    public bool udarioPlayera;
     private void TakeLife()
     {
-        health_script.healthCounter--;
-        Player.position = new Vector3(0, 0, 0);
-        Debug.Log("Health: " + health_script.healthCounter);
+        if (udarioPlayera == false)
+        {
+            // zvekanje
+            health_script.healthCounter--;
+            //Player.position = new Vector3(0, 0, 0);
+            Debug.Log("Health: " + health_script.healthCounter);
+
+        }
     }
 }
