@@ -24,6 +24,11 @@ public class CarrotPowerUps : MonoBehaviour
         {
             ActivateRotation();
         }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            DeactivateRotation();
+
+        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (isInGround)
@@ -152,32 +157,36 @@ public class CarrotPowerUps : MonoBehaviour
         playerSounds.rotatingSound.Play();
         rotationParrticles.Play();
         FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("spin");
-        Invoke("DeactivateRotation", timeInRotation);
+        //Invoke("DeactivateRotation", timeInRotation);
 
-        if (carrotAnimator && isRotating == false)
-        {
-            carrotAnimator.SetTrigger("rotating");
-        }
+        //if (carrotAnimator && isRotating == false)
+        //{
+        //    carrotAnimator.SetTrigger("rotating");
+        //}
 
     }
     public void DeactivateRotation()
     {
-        isRotating = false;
-        rotationParrticles.Clear();
-        rotationParrticles.Pause();
-        if (carrotAnimator)
+        if (isRotating == true)
         {
-            if (FindObjectOfType<CarrotLeanController>().isRunning)
+            isRotating = false;
+            rotationParrticles.Clear();
+            rotationParrticles.Pause();
+            if (carrotAnimator)
             {
-            FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("run");
+                if (FindObjectOfType<CarrotLeanController>().isRunning)
+                {
+                FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("run");
 
-            }
-            else
-            {
+                }
+                else
+                {
 
-                FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("idle");
+                    FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("idle");
+                }
+                carrotAnimator.ResetTrigger("rotating");
             }
-            carrotAnimator.ResetTrigger("rotating");
+
         }
 
     }
