@@ -12,7 +12,7 @@ public class CheckSpeed : MonoBehaviour
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision collision)
     {
-        if (speed_script._speed >= 7 && collision.gameObject.tag == "Player")
+        if (speed_script._speed >= 13 && collision.gameObject.tag == "Player")
         {
             Instantiate(destroyParticles, transform.position, Quaternion.identity);
             FindObjectOfType<playerSounds>().posterDestroy.Play();

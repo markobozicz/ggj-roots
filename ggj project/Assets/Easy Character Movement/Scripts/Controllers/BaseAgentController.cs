@@ -180,7 +180,7 @@ namespace ECM.Controllers
             if (Input.GetKeyDown(KeyCode.P))
                 pause = !pause;
 
-            crouch = Input.GetKey(KeyCode.C);
+            // crouch = Input.GetKey(KeyCode.C);
 
             // Handle mouse input
 
