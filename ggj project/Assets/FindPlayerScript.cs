@@ -17,10 +17,18 @@ public class FindPlayerScript : MonoBehaviour
     public GameObject health;
     private HealthCounterScript health_script;
 
+    public Transform particlePosition;
+
     void Start()
     {
+        animator.ResetTrigger("idle");
+        animator.ResetTrigger("attack");
+        animator.ResetTrigger("jump");
+        animator.ResetTrigger("run");
         // idle animation
         animator.SetTrigger("idle");
+
+
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, jump_height, 0.0f);
@@ -40,6 +48,11 @@ public class FindPlayerScript : MonoBehaviour
         else
         {
             //idle 
+            animator.ResetTrigger("idle");
+            animator.ResetTrigger("attack");
+            animator.ResetTrigger("jump");
+            animator.ResetTrigger("run");
+            animator.SetTrigger("idle");
             noticed_range = 10;
             player_chasing = false;
         }
@@ -47,12 +60,21 @@ public class FindPlayerScript : MonoBehaviour
 
     private void Chase()
     {
-        // run animation
-        Vector3 forward = transform.forward;
-        forward.y = 0;
-        transform.position += forward * rabbit_speed * Time.deltaTime;
-        noticed_range = 15;
-        player_chasing = true;
+        if (udarioPlayera == false)
+        {
+            // run animation
+            animator.ResetTrigger("idle");
+            animator.ResetTrigger("attack");
+            animator.ResetTrigger("jump");
+            animator.ResetTrigger("run");
+            animator.SetTrigger("run");
+            Vector3 forward = transform.forward;
+            forward.y = 0;
+            transform.position += forward * rabbit_speed * Time.deltaTime;
+            noticed_range = 15;
+            player_chasing = true;
+
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -72,12 +94,19 @@ public class FindPlayerScript : MonoBehaviour
         }
         else
         {
+            Destroy(GameObject.Find("MRKVA PREFAB"));
+            FindObjectOfType<playerSounds>().crunchSound.Play();
             TakeLife();
         }
     }
     private void Jump()
     {
         // jump
+        animator.ResetTrigger("idle");
+        animator.ResetTrigger("attack");
+        animator.ResetTrigger("jump");
+        animator.ResetTrigger("run");
+        animator.SetTrigger("jump");
         rb.AddForce(jump * 2, ForceMode.Impulse);
         isgrounded = false;
 
@@ -87,11 +116,34 @@ public class FindPlayerScript : MonoBehaviour
     {
         if (udarioPlayera == false)
         {
+            udarioPlayera = true;
             // zvekanje
+            animator.ResetTrigger("idle");
+            animator.ResetTrigger("attack");
+            animator.ResetTrigger("jump");
+            animator.ResetTrigger("run");
+            animator.SetTrigger("attack");
             health_script.healthCounter--;
             //Player.position = new Vector3(0, 0, 0);
             Debug.Log("Health: " + health_script.healthCounter);
 
+            Invoke("ResetTriggers", 1f);
+            GameObject objToIns = FindObjectOfType<particlesPlayer>().attackParticli;
+            Instantiate(objToIns, particlePosition.position, Quaternion.identity);
+            FindObjectOfType<particlesPlayer>().deathParticles.Play() ;
+
         }
+
+
+    }
+
+    public void ResetTriggers()
+    {
+
+        animator.ResetTrigger("idle");
+        animator.ResetTrigger("attack");
+        animator.ResetTrigger("jump");
+        animator.ResetTrigger("run");
+        animator.SetTrigger("idle");
     }
 }

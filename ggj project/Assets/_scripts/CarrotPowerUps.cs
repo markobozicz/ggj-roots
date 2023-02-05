@@ -53,8 +53,23 @@ public class CarrotPowerUps : MonoBehaviour
             }
         }
 
-        
+        if (Input.GetKeyDown(KeyCode.S) && goingBack == false)
+        {
+            goingBack = true;
+            carrotAnimator.SetTrigger("ideback");
+
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            goingBack = false;
+            carrotAnimator.SetTrigger("idle");
+
+        }
+
+
     }
+
+    bool goingBack;
 
     TakeableObject objToPick;
     public Transform positionToPlacePicked;

@@ -617,11 +617,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c754dcd1fe6a015409569af86c7c1863, type: 3}
---- !u!198 &121417206 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 830263026585665537, guid: 8a208ad658470cf4e95f97daae177cba, type: 3}
-  m_PrefabInstance: {fileID: 1257486187}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &122194744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1702,7 +1697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &486051860
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3146,29 +3141,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c754dcd1fe6a015409569af86c7c1863, type: 3}
---- !u!1 &860183586 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6314642070846654279, guid: 8a208ad658470cf4e95f97daae177cba, type: 3}
-  m_PrefabInstance: {fileID: 1257486187}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &860183587 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6314642070846654278, guid: 8a208ad658470cf4e95f97daae177cba, type: 3}
   m_PrefabInstance: {fileID: 1257486187}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &860183588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860183586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 031f31893003a0742a0e95f4f1025fbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpParticles: {fileID: 121417206}
 --- !u!1001 &864901920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5971,11 +5948,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201ca3c490030bc4290a75b8416bdf0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1742169463}
   noticed_range: 10
   player_chasing: 0
   rabbit_speed: 7.5
   jump_height: 3.8
   health: {fileID: 6097675591046166872}
+  particlePosition: {fileID: 0}
+  udarioPlayera: 0
 --- !u!54 &1742169461
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6006,6 +5986,11 @@ CapsuleCollider:
   m_Height: 1.9850647
   m_Direction: 2
   m_Center: {x: -1.11477494e-10, y: 0.67818296, z: 0.061791737}
+--- !u!95 &1742169463 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3012878657145538078, guid: c2da253db87971c49aa27fd64f3f9b06, type: 3}
+  m_PrefabInstance: {fileID: 245558345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1747808464
 GameObject:
   m_ObjectHideFlags: 0

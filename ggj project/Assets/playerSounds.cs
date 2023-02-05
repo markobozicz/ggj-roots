@@ -15,6 +15,7 @@ public class playerSounds : MonoBehaviour
     public AudioSource waterSound;
 
     public AudioSource posterDestroy;
+    public AudioSource crunchSound;
     
     
 
