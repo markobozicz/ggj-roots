@@ -244,6 +244,7 @@ namespace ECM.Components
                 // Inform we found 'ground' and if is valid
 
                 groundHitInfo.isOnGround = true;
+                //FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("idle");
                 groundHitInfo.isValidGround = !groundHitInfo.isOnLedgeEmptySide &&
                                               Vector3.Angle(groundHitInfo.surfaceNormal, up) < groundLimit;
 

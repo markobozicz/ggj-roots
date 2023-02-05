@@ -12,7 +12,7 @@ public class CarrotLeanController : MonoBehaviour
     public playerSounds playerSounds;
     public ParticleSystem walkParticles;
 
-
+    public bool isRunning;
 
     private void Update()
     {
@@ -21,20 +21,65 @@ public class CarrotLeanController : MonoBehaviour
             SetLean();
             playerSounds.PlayWalkingLoop(true);
             walkParticles.Play();
+            if (isRunning == false)
+            {
+                isRunning = true;
+                Debug.LogError("opett");
+                if (FindObjectOfType<CarrotPowerUps>().isRotating == false)
+                {
+                    FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("run");
+                }
+            }
 
         }
         if (Input.GetKeyUp(KeyCode.W))
         {
             walkParticles.Clear();
             walkParticles.Pause();
+
+            isRunning = false;
+            if (FindObjectOfType<CarrotPowerUps>().isRotating == false)
+            {
+            FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("idle");
+            }
+
             playerSounds.PlayWalkingLoop(false);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (FindObjectOfType<CarrotPowerUps>().isRotating == false)
+            {
+            FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("jump");
+            }
             playerSounds.PlayJumpSound();
             playerSounds.PlayWalkingLoop(false);
+            Invoke("DeactivateJump", .7f);
+            FindObjectOfType<particlesPlayer>().jumpParticles.Play();
+            Invoke("DeactivateJumpParticles", .8f);
 
         }
+    }
+    private void DeactivateJumpParticles()
+    {
+        if (isRunning)
+        {
+            FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("run");
+
+        }
+        else
+        {
+            FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("idle");
+
+        }
+        FindObjectOfType<particlesPlayer>().jumpParticles.Clear();
+        //FindObjectOfType<particlesPlayer>().jumpParticles.Pause();
+
+    }
+
+    private void DeactivateJump()
+    {
+
+        FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("idle");
     }
     public void SetLean()
     {

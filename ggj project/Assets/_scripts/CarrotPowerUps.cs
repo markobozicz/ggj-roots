@@ -20,7 +20,7 @@ public class CarrotPowerUps : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             ActivateRotation();
         }
@@ -145,13 +145,16 @@ public class CarrotPowerUps : MonoBehaviour
         }
 
     }
-
+    public bool isRotating;
     public void ActivateRotation()
     {
+        isRotating = true;
         playerSounds.rotatingSound.Play();
         rotationParrticles.Play();
-            Invoke("DeactivateRotation", timeInRotation);
-        if (carrotAnimator)
+        FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("spin");
+        Invoke("DeactivateRotation", timeInRotation);
+
+        if (carrotAnimator && isRotating == false)
         {
             carrotAnimator.SetTrigger("rotating");
         }
@@ -159,10 +162,21 @@ public class CarrotPowerUps : MonoBehaviour
     }
     public void DeactivateRotation()
     {
-        rotationParrticles.Stop();
-        rotationParrticles.Stop();
+        isRotating = false;
+        rotationParrticles.Clear();
+        rotationParrticles.Pause();
         if (carrotAnimator)
         {
+            if (FindObjectOfType<CarrotLeanController>().isRunning)
+            {
+            FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("run");
+
+            }
+            else
+            {
+
+                FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("idle");
+            }
             carrotAnimator.ResetTrigger("rotating");
         }
 
