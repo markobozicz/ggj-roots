@@ -835,7 +835,7 @@ namespace ECM.Components
         public void ApplyVerticalImpulse(float impulse)
         {
             Vector3 up = transform.up;
-            cachedRigidbody.velocity = Vector3.Normalize(Vector3.ProjectOnPlane(cachedRigidbody.velocity, up) + up * impulse) * 10;
+            cachedRigidbody.velocity = Vector3.Normalize(Vector3.ProjectOnPlane(cachedRigidbody.velocity, up) + up * impulse) * 13;
         }
 
         /// <summary>
@@ -845,7 +845,7 @@ namespace ECM.Components
 
         public void ApplyImpulse(Vector3 impulse)
         {
-            cachedRigidbody.velocity += impulse - Vector3.Project(cachedRigidbody.velocity, transform.up);
+            cachedRigidbody.velocity += Vector3.Normalize(impulse - Vector3.Project(cachedRigidbody.velocity, transform.up));
         }
 
         /// <summary>
