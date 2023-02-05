@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:ggj project/Assets/_art/poster stand 2.prefab.meta
 guid: b3c4a47af026ed349a6095869ea03bc6
 PrefabImporter:
+========
+guid: 3ebbfc87982b3c745a5bbb3a1513781f
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> d729b30004146fea5f873681007a990ba006ffaa:ggj project/Assets/prefabs.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
