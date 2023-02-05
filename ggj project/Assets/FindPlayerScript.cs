@@ -30,7 +30,7 @@ public class FindPlayerScript : MonoBehaviour
         transform.LookAt(Player);
         float y_difference = Mathf.Abs(transform.position.y - Player.position.y);
 
-        if (Vector3.Distance(transform.position, Player.position) <= noticed_range && y_difference<=4.4)
+        if (Vector3.Distance(transform.position, Player.position) <= noticed_range)
         {
             Chase();
         }
