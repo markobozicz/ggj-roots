@@ -89,7 +89,7 @@ namespace ECM.Walkthrough.Flying
 
             jump = Input.GetButton("Jump");
 
-            crouch = Input.GetKey(KeyCode.C);
+           // crouch = Input.GetKey(KeyCode.C);
 
             // Flying input
 
