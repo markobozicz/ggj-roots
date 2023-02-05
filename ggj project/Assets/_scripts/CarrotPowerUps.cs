@@ -150,10 +150,10 @@ public class CarrotPowerUps : MonoBehaviour
     {
         rotationParrticles.Play();
         playerSounds.rotatingSound.Play();
+            Invoke("DeactivateRotation", timeInRotation);
         if (carrotAnimator)
         {
             carrotAnimator.SetTrigger("rotating");
-            Invoke("DeactivateRotation", timeInRotation);
         }
 
     }

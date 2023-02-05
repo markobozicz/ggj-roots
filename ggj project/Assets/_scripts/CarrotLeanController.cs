@@ -10,6 +10,7 @@ public class CarrotLeanController : MonoBehaviour
     public float acceleration;
     public float speedRamp;
     public playerSounds playerSounds;
+    public ParticleSystem walkParticles;
 
 
 
@@ -19,15 +20,19 @@ public class CarrotLeanController : MonoBehaviour
         {
             SetLean();
             playerSounds.PlayWalkingLoop(true);
+            walkParticles.Play();
 
         }
         if (Input.GetKeyUp(KeyCode.W))
         {
+            walkParticles.Clear();
+            walkParticles.Pause();
             playerSounds.PlayWalkingLoop(false);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             playerSounds.PlayJumpSound();
+            playerSounds.PlayWalkingLoop(false);
 
         }
     }
