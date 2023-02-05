@@ -279,7 +279,7 @@ namespace ECM.Examples.ClimbingLadders
 
             jump = Input.GetButton("Jump");
 
-            //crouch = Input.GetKey(KeyCode.C);
+            crouch = Input.GetKey(KeyCode.C);
 
             interact = Input.GetKey(KeyCode.E);
         }

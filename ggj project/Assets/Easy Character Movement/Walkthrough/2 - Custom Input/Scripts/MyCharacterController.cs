@@ -39,7 +39,7 @@ namespace ECM.Walkthrough.CustomInput
 
             jump = Input.GetButton("Jump");
 
-           // crouch = Input.GetKey(KeyCode.C);
+            crouch = Input.GetKey(KeyCode.C);
 
 
             //

@@ -42,7 +42,7 @@ namespace ECM.Walkthrough.ToggleGravity
 
             jump = Input.GetButton("Jump");
 
-          //  crouch = Input.GetKey(KeyCode.C);
+            crouch = Input.GetKey(KeyCode.C);
 
 
             // If the character is not grounded (eg: jumping, falling, etc),

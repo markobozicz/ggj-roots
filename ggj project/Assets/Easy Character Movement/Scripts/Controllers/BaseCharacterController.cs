@@ -318,6 +318,7 @@ namespace ECM.Controllers
         {
             //get { return Mathf.Sqrt(2.0f * baseJumpHeight * movement.gravity); }
             get { return Mathf.Sqrt(2.0f * baseJumpHeight * movement.gravity.magnitude); }
+            
         }
 
         /// <summary>
@@ -608,7 +609,6 @@ namespace ECM.Controllers
             _jumpUngroundedTimer = _jumpPostGroundedToleranceTime;
 
             // Apply jump impulse
-
             movement.ApplyVerticalImpulse(jumpImpulse);
 
             // 'Pause' grounding, allowing character to safely leave the 'ground'
@@ -667,6 +667,9 @@ namespace ECM.Controllers
                 return;
 
             // If jump button is held down and extra jump time is not exceeded...
+            Debug.Log("_jump: " + _jump);
+            Debug.Log("_jumpTimer: " + _jumpTimer);
+            Debug.Log("_extraJumpTime: " + _extraJumpTime);
 
             if (_jump && _jumpTimer < _extraJumpTime)
             {
@@ -682,7 +685,8 @@ namespace ECM.Controllers
 
                 // Update jump timer
 
-                _jumpTimer = Mathf.Min(_jumpTimer + Time.deltaTime, _extraJumpTime);
+                //_jumpTimer = Mathf.Min(_jumpTimer + Time.deltaTime, _extraJumpTime);
+                _jumpTimer = 0.5f;
             }
             else
             {
@@ -858,7 +862,7 @@ namespace ECM.Controllers
 
             jump = Input.GetButton("Jump");
 
-            //crouch = Input.GetKey(KeyCode.C);
+            crouch = Input.GetKey(KeyCode.C);
         }
 
         #endregion
