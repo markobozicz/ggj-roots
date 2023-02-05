@@ -148,8 +148,8 @@ public class CarrotPowerUps : MonoBehaviour
 
     public void ActivateRotation()
     {
-        rotationParrticles.Play();
         playerSounds.rotatingSound.Play();
+        rotationParrticles.Play();
             Invoke("DeactivateRotation", timeInRotation);
         if (carrotAnimator)
         {
