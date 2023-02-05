@@ -94,7 +94,7 @@ public class FindPlayerScript : MonoBehaviour
         }
         else
         {
-            Destroy(GameObject.Find("MRKVA PREFAB"));
+            FindObjectOfType<particlesPlayer>().deathParticles.Play();
             FindObjectOfType<playerSounds>().crunchSound.Play();
             TakeLife();
         }
@@ -114,6 +114,10 @@ public class FindPlayerScript : MonoBehaviour
     public bool udarioPlayera;
     private void TakeLife()
     {
+            GameObject objToIns = FindObjectOfType<particlesPlayer>().attackParticli;
+            Instantiate(objToIns, particlePosition.position, Quaternion.identity);
+            Destroy(GameObject.Find("mrkva karakter"));
+            Destroy(FindObjectOfType<PlayerAnimationControler>());
         if (udarioPlayera == false)
         {
             udarioPlayera = true;
@@ -128,9 +132,6 @@ public class FindPlayerScript : MonoBehaviour
             Debug.Log("Health: " + health_script.healthCounter);
 
             Invoke("ResetTriggers", 1f);
-            GameObject objToIns = FindObjectOfType<particlesPlayer>().attackParticli;
-            Instantiate(objToIns, particlePosition.position, Quaternion.identity);
-            FindObjectOfType<particlesPlayer>().deathParticles.Play() ;
 
         }
 

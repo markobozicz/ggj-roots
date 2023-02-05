@@ -4862,6 +4862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpParticles: {fileID: 830263026585665537}
+  deathParticles: {fileID: 1693073954124825759}
   attackParticli: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
 --- !u!1 &6314642071618686651
 GameObject:
