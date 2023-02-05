@@ -5,14 +5,13 @@ using ECM.Controllers;
 
 public class CheckSpeed : MonoBehaviour
 {
-    public BaseCharacterController speed_script;
     public PosterCounter poster_counter_script;
 
     public GameObject destroyParticles;
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision collision)
     {
-        if (speed_script._speed >= 13 && collision.gameObject.tag == "Player")
+        if (Input.GetKey(KeyCode.LeftShift) && collision.gameObject.tag == "Player")
         {
             Instantiate(destroyParticles, transform.position, Quaternion.identity);
             FindObjectOfType<playerSounds>().posterDestroy.Play();
