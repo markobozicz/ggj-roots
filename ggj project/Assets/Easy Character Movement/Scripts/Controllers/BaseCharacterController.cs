@@ -575,8 +575,12 @@ namespace ECM.Controllers
                 // On landing, reset _isJumping flag
 
                 if (!movement.wasGrounded && movement.isGrounded)
+                {
                     _isJumping = false;
-            }
+                    transform.position += new Vector3(0, -0.35f, 0);
+                }
+
+                }
 
             // Update jump ungrounded timer (post jump tolerance time)
 

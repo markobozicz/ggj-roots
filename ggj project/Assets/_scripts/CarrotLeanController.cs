@@ -24,7 +24,6 @@ public class CarrotLeanController : MonoBehaviour
             if (isRunning == false)
             {
                 isRunning = true;
-                Debug.LogError("opett");
                 if (FindObjectOfType<CarrotPowerUps>().isRotating == false)
                 {
                     FindObjectOfType<PlayerAnimationControler>().animatorComponent.SetTrigger("run");
