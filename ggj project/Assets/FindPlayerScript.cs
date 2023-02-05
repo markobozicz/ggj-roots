@@ -27,8 +27,6 @@ public class FindPlayerScript : MonoBehaviour
         animator.ResetTrigger("run");
         // idle animation
         animator.SetTrigger("idle");
-
-
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, jump_height, 0.0f);

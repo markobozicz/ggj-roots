@@ -7,7 +7,6 @@ public class TireJump : MonoBehaviour
     private Transform Player;
     Rigidbody rb;
     private bool tf = false;
-    private bool jumping = false;
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -16,9 +15,8 @@ public class TireJump : MonoBehaviour
     void FixedUpdate()
     {
         if (tf) rb.AddForce(Vector3.up * 70, ForceMode.Impulse);
-        if (Player.transform.position.y - transform.position.y >= 0.5 && Player.transform.position.y - transform.position.y <= 0.6 && jumping)
+        if (Player.transform.position.y - transform.position.y >= 0.5 && Player.transform.position.y - transform.position.y <= 0.6)
         {
-            Debug.Log("test");
             rb.AddForce(Vector3.up * -70, ForceMode.Impulse);
         }
     }
@@ -27,7 +25,6 @@ public class TireJump : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             tf = true;
-            jumping = true;
         }
     }
     private void OnTriggerExit(Collider other)
