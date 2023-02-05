@@ -146,7 +146,7 @@ namespace ECM.Examples
 
             jump = Input.GetButton("Jump");
 
-            crouch = Input.GetKey(KeyCode.C);
+            // crouch = Input.GetKey(KeyCode.C);
 
 
             // Transform moveDirection vector to be relative to camera view direction

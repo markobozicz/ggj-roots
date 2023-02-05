@@ -862,7 +862,7 @@ namespace ECM.Controllers
 
             jump = Input.GetButton("Jump");
 
-            crouch = Input.GetKey(KeyCode.C);
+            // crouch = Input.GetKey(KeyCode.C);
         }
 
         #endregion
