@@ -667,9 +667,6 @@ namespace ECM.Controllers
                 return;
 
             // If jump button is held down and extra jump time is not exceeded...
-            Debug.Log("_jump: " + _jump);
-            Debug.Log("_jumpTimer: " + _jumpTimer);
-            Debug.Log("_extraJumpTime: " + _extraJumpTime);
 
             if (_jump && _jumpTimer < _extraJumpTime)
             {
