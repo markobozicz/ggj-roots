@@ -18,7 +18,7 @@ namespace ECM.Controllers
         [Header("First Person")]
         [Tooltip("Speed when moving forward.")]
         [SerializeField]
-        public float _forwardSpeed = 5.0f;
+        public float _forwardSpeed = 7.0f;
 
         [Tooltip("Speed when moving backwards.")]
         [SerializeField]
@@ -26,7 +26,7 @@ namespace ECM.Controllers
 
         [Tooltip("Speed when moving sideways.")]
         [SerializeField]
-        public float _strafeSpeed = 4.0f;
+        public float _strafeSpeed = 10.0f;
 
         [Tooltip("Speed multiplier while running.")]
         [SerializeField]
