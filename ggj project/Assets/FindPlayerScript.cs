@@ -94,6 +94,9 @@ public class FindPlayerScript : MonoBehaviour
         {
             FindObjectOfType<particlesPlayer>().deathParticles.Play();
             FindObjectOfType<playerSounds>().crunchSound.Play();
+
+            Destroy(GameObject.Find("oci"));
+            Destroy(GameObject.Find("usta"));
             TakeLife();
         }
     }
